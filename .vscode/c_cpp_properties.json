@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/src/**",
+        "${workspaceFolder}/libs/wxWidgets/lib/gcc_lib/mswu",
+        "${workspaceFolder}/libs/wxWidgets/include"
+      ],
+    },
+    
+    
+  ],
+  "version": 4
+}

@@ -1,0 +1,5 @@
+C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build/CMakeFiles/dungeon-explorer.dir
+C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build/CMakeFiles/package.dir
+C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build/CMakeFiles/package_source.dir
+C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build/CMakeFiles/edit_cache.dir
+C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build/CMakeFiles/rebuild_cache.dir
