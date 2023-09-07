@@ -1,8 +1,0 @@
-[
-{
-  "directory": "C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/build",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -DUNICODE -D_UNICODE @CMakeFiles/dungeon-explorer.dir/includes_CXX.rsp -g -o CMakeFiles\\dungeon-explorer.dir\\src\\main.cpp.obj -c C:\\Users\\Gatuno7000\\Documents\\GitHub\\dungeon-explorer\\src\\main.cpp",
-  "file": "C:/Users/Gatuno7000/Documents/GitHub/dungeon-explorer/src/main.cpp",
-  "output": "CMakeFiles/dungeon-explorer.dir/src/main.cpp.obj"
-}
-]
