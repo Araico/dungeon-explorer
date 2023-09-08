@@ -43,6 +43,4 @@ class Spell {
    bool getVerbalComponent() const;
    bool getSomaticComponent() const;
    bool getMaterialComponent() const;
-
-   string iconPath;
 };

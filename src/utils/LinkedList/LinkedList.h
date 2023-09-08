@@ -10,21 +10,29 @@ template <typename T>
 class LinkedList {
   private:
    Node<T>* first;
-   int length = 1;
+   int length = 0;
 
   public:
-   LinkedList(T firstVal);
+   LinkedList();
    T& operator[](int index);
-   int getLength();
+
    void Insert(T data, int index = -1);
+   int getLength();
 };
 
-// implementation
+// implem
 template <typename T>
-LinkedList<T>::LinkedList(T firstVal) : first(new Node<T>(firstVal)) {}
+LinkedList<T>::LinkedList() : first(nullptr) {}
+
+template <typename T>
+int LinkedList<T>::getLength() {
+   return length;
+}
 
 template <typename T>
 void LinkedList<T>::Insert(T data, int index) {
+   if (first == nullptr) first = new Node<T>(data, nullptr);
+
    Node<T>* currentNode = first;
 
    if (index == -1) {
@@ -59,15 +67,11 @@ T& LinkedList<T>::operator[](int index) {
       return currentNode->getData();
 
    } else {
-      for (int i = 0; i < index; i++) {
+      for (int i = 0; i < index + 1; i++) {
+         // cout << "-----";
          currentNode = currentNode->getNext();
       }
 
       return currentNode->getData();
    }
-}
-
-template <typename T>
-int LinkedList<T>::getLength() {
-   return length;
 }

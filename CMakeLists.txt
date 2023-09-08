@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.27)
 project(dungeon-explorer VERSION 0.1.0 LANGUAGES C CXX)
 
-add_executable(dungeon-explorer "src/main.cpp")
+#add all .cpps 
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+# Add your executable target
+add_executable(dungeon-explorer ${SOURCES})
 
 # Specify the root directory of wxWidgets
 set(wxWidgets_ROOT_DIR "${CMAKE_SOURCE_DIR}/libs/wxWidgets")

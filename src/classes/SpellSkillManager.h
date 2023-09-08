@@ -3,11 +3,7 @@
 
 class SpellSkillManager {
   private:
-    public:
+  public:
    SpellSkillManager(/* args */);
    ~SpellSkillManager();
 };
-
-SpellSkillManager::SpellSkillManager(/* args */) {}
-
-SpellSkillManager::~SpellSkillManager() {}
