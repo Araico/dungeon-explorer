@@ -16,7 +16,7 @@ else()
     set(wxWidgets_ROOT_DIR "${CMAKE_SOURCE_DIR}/libs/wxWidgets")
 endif()
 
-find_package(wxWidgets REQUIRED core base)
+find_package(wxWidgets REQUIRED COMPONENTS net core base)
 
 # Add the include directories for wxWidgets
 include(${wxWidgets_USE_FILE})

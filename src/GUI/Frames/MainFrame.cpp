@@ -96,6 +96,11 @@ void MainFrame::OnLoadCSV(wxCommandEvent& event) {
          columns.push_back(item);
       }
 
+      if (columns.size() != 7) {
+         wxLogError("Invalid monsters.csv");
+         return;
+      }
+
       //------------Load monsterts into linked list----------------------
       Monster tempMonster(columns[0], stof(columns[1]), columns[2], columns[3],
                           stoi(columns[4]), stoi(columns[5]), columns[6]);
@@ -103,12 +108,12 @@ void MainFrame::OnLoadCSV(wxCommandEvent& event) {
    }
    file.close();
 
-   // add monsters to ui list
+   // add linked list elements to ui list
    for (int i = 0; i < monsterManager.getMonsterCount(); i++) {
       Monster temp = monsterManager.getMonsterAtIndex(i);
 
-      AppendMonsterToListView(temp.getName(), temp.getType(),
-                              to_string(temp.getCr()), temp.getSize(),
+      AppendMonsterToListView(temp.getName(), to_string(temp.getCr()),
+                              temp.getType(), temp.getSize(),
                               to_string(temp.getAc()), to_string(temp.getHp()),
                               temp.getAlign());
    }
