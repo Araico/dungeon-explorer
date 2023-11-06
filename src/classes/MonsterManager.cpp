@@ -2,7 +2,7 @@
 #include <iostream>
 
 void MonsterManager::AddMonster(Monster monster) {
-   monsterList.Insert(monster);
+   monsterList.insert(monster);
    // std::cout << monster.getName() << std::endl;
 }
 

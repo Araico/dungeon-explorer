@@ -25,6 +25,9 @@ Crea el tipo de dato abstracto para representar a un monstruo. Y una lista ligad
 
 Repositorio de libros de hechizos y habilidades:
 
+window donde muestra el inventario de hechizos y habilidades del jugador y el jugador puede agregar las que quiera de una lista   
+
+
 Cree una estructura de datos para administrar hechizos y habilidades, lo que permite a los jugadores personalizar y mantener los libros de hechizos y habilidades únicas de sus personajes. Implemente un mecanismo eficiente de búsqueda y filtrado para una selección rápida de hechizos durante el juego. Investiga 15 hechizos y habilidades qué puedes utilizar. Crea el tipo de dato abstracto para representar un hechizo y/o habilidad. Deben ser cargadas en una lista de ligada para su acceso.
 
 

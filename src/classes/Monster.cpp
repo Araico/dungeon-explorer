@@ -10,6 +10,8 @@ Monster::Monster(string name, float cr, string type, string size, int ac,
       hp(hp),
       align(align) {}
 
+Monster::Monster() {}
+
 Monster::~Monster() {}
 
 string Monster::getName() const { return name; }

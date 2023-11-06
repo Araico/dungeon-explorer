@@ -1,5 +1,5 @@
 #pragma once
-#include "../utils/LinkedList/LinkedList.h"
+#include "../DataStructures/LinkedList/LinkedList.h"
 
 class SpellSkillManager {
   private:

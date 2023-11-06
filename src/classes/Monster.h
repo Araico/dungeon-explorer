@@ -17,6 +17,7 @@ class Monster {
   public:
    Monster(string name, float cr, string type, string size, int ac, int hp,
            string align);
+   Monster();
    ~Monster();
 
    string getName() const;
