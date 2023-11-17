@@ -167,7 +167,7 @@ void LinkedList<T>::print() {
    int i = 0;
    while (tempNode != nullptr) {
       cout << "----[Index: " << i << "]----" << endl;
-      cout << tempNode->getData() << "\n\n";
+      // cout << tempNode->getData() << "\n\n";
       tempNode = tempNode->getNextNodePtr();
       i++;
    }
