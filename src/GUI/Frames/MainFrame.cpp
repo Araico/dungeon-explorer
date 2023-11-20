@@ -14,6 +14,8 @@ MainFrame::MainFrame(const wxString& title)
    monsterCodexFrame->Show(true);
    //
 
+   wxButton* helloButton = new wxButton(this, wxID_ANY, "Hello");
+
    BindEvents();
 }
 
