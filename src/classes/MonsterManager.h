@@ -5,11 +5,10 @@
 
 class MonsterManager {
   private:
-   LinkedList<Monster> monsterList;
+   static LinkedList<Monster> monsterList;
 
   public:
-   void AddMonster(Monster monster);
-   MonsterManager(/* args */);
-   Monster getMonsterAtIndex(int index);
-   int getMonsterCount();
+   static void AddMonster(Monster monster);
+   static Monster getMonsterAtIndex(int index);
+   static int getMonsterCount();
 };

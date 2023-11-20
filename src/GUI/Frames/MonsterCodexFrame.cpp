@@ -2,13 +2,13 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "../../classes/MonsterManager.h"
 #include "../../enums/MonsterEnums.h"
 
 enum IDs { LOAD_CSV_BUTTON_ID = 1, TEST = 0 };
 
-MonsterCodexFrame::MonsterCodexFrame(const wxString& title,
-                                     MonsterManager& monsterManager)
-    : wxFrame(nullptr, wxID_ANY, title), monsterManager(monsterManager) {
+MonsterCodexFrame::MonsterCodexFrame(const wxString& title)
+    : wxFrame(nullptr, wxID_ANY, title) {
 
    AddMenuBar();
    AddMonsterListView();
@@ -106,13 +106,13 @@ void MonsterCodexFrame::OnLoadCSV(wxCommandEvent& event) {
       //------------Load monsterts into linked list----------------------
       Monster tempMonster(columns[0], stof(columns[1]), columns[2], columns[3],
                           stoi(columns[4]), stoi(columns[5]), columns[6]);
-      monsterManager.AddMonster(tempMonster);
+      MonsterManager::AddMonster(tempMonster);
    }
    file.close();
 
    // add linked list elements to ui list
-   for (int i = 0; i < monsterManager.getMonsterCount(); i++) {
-      Monster temp = monsterManager.getMonsterAtIndex(i);
+   for (int i = 0; i < MonsterManager::getMonsterCount(); i++) {
+      Monster temp = MonsterManager::getMonsterAtIndex(i);
 
       AppendMonsterToListView(temp.getName(), to_string(temp.getCr()),
                               temp.getType(), temp.getSize(),

@@ -4,7 +4,7 @@
 
 bool App::OnInit() {
    // MainFrame* mainFrame = new MainFrame("Dungeon Explorer", monsterManager);
-   MainFrame* mainFrame = new MainFrame("Dungeon Explorer", monsterManager);
+   MainFrame* mainFrame = new MainFrame("Dungeon Explorer");
 
    mainFrame->SetClientSize(800, 600);
    mainFrame->Center();

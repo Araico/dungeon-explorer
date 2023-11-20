@@ -8,9 +8,6 @@ using namespace std;
 
 class MonsterCodexFrame : public wxFrame {
   private:
-   // Atributes
-   MonsterManager& monsterManager;
-
    wxListView* monsterListView;
 
    ///
@@ -24,5 +21,5 @@ class MonsterCodexFrame : public wxFrame {
                                 const string hp, const string align);
 
   public:
-   MonsterCodexFrame(const wxString& title, MonsterManager& monsterManager);
+   MonsterCodexFrame(const wxString& title);
 };

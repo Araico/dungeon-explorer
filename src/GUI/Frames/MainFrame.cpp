@@ -5,12 +5,12 @@
 #include "../../enums/MonsterEnums.h"
 #include "MonsterCodexFrame.h"
 
-MainFrame::MainFrame(const wxString& title, MonsterManager& monsterManager)
+MainFrame::MainFrame(const wxString& title)
     : wxFrame(nullptr, wxID_ANY, title) {
 
    // show monster codex
    MonsterCodexFrame* monsterCodexFrame =
-       new MonsterCodexFrame("Monster Codex", monsterManager);
+       new MonsterCodexFrame("Monster Codex");
    monsterCodexFrame->Show(true);
    //
 

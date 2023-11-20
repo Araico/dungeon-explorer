@@ -11,5 +11,5 @@ class MainFrame : public wxFrame {
    void BindEvents();
 
   public:
-   MainFrame(const wxString& title, MonsterManager& monsterManager);
+   MainFrame(const wxString& title);
 };
