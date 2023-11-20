@@ -5,6 +5,7 @@ class Dungeon {
    Monster monster;
 
   public:
+   Dungeon();
    Dungeon(Monster monster);
    Monster getMonster();
 };

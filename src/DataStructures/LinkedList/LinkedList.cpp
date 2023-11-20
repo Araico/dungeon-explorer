@@ -1,5 +1,6 @@
 #include "LinkedList.h"
 #include <stdexcept>
+#include "../../classes/Dungeon.h"
 #include "../../classes/Monster.h"
 using namespace std;
 
@@ -176,3 +177,4 @@ void LinkedList<T>::print() {
 // Explicit instantiation for the int type
 template class LinkedList<int>;
 template class LinkedList<Monster>;
+template class LinkedList<Dungeon>;

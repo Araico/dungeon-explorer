@@ -1,5 +1,6 @@
 #include "Node.h"
 #include <iostream>
+#include "../../classes/Dungeon.h"
 #include "../../classes/Monster.h"
 using namespace std;
 
@@ -80,3 +81,4 @@ void Node<T>::setData(T data) {
 // Explicit instantiation for the int type
 template class Node<int>;
 template class Node<Monster>;
+template class Node<Dungeon>;
