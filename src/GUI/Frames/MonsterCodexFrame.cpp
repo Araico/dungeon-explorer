@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include "../../classes/GameManager.h"
 #include "../../classes/MonsterManager.h"
 #include "../../enums/MonsterEnums.h"
 
@@ -119,4 +120,6 @@ void MonsterCodexFrame::OnLoadCSV(wxCommandEvent& event) {
                               to_string(temp.getAc()), to_string(temp.getHp()),
                               temp.getAlign());
    }
+
+   GameManager::startNewGame();
 }

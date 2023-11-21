@@ -1,11 +1,13 @@
+#pragma once
+
 #include "Monster.h"
 
 class Dungeon {
   private:
-   Monster monster;
+   Monster* monster;
 
   public:
    Dungeon();
-   Dungeon(Monster monster);
-   Monster getMonster();
+   Dungeon(Monster* monster);
+   Monster* getMonster();
 };

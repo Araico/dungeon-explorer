@@ -12,6 +12,15 @@ Monster::Monster(string name, float cr, string type, string size, int ac,
 
 Monster::Monster() {}
 
+Monster::Monster(const Monster& monsterRef)
+    : name(monsterRef.getName()),
+      cr(monsterRef.getCr()),
+      type(monsterRef.getType()),
+      size(monsterRef.getSize()),
+      ac(monsterRef.getAc()),
+      hp(monsterRef.getHp()),
+      align(monsterRef.getAlign()) {}
+
 Monster::~Monster() {}
 
 string Monster::getName() const { return name; }
@@ -27,3 +36,5 @@ int Monster::getAc() const { return ac; }
 int Monster::getHp() const { return hp; }
 
 string Monster::getAlign() const { return align; }
+
+void Monster::takeDamage(int dmg) { hp -= dmg; }

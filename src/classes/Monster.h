@@ -18,6 +18,8 @@ class Monster {
    Monster(string name, float cr, string type, string size, int ac, int hp,
            string align);
    Monster();
+   Monster(const Monster& monsterRef);
+
    ~Monster();
 
    string getName() const;
@@ -27,4 +29,6 @@ class Monster {
    int getAc() const;
    int getHp() const;
    string getAlign() const;
+
+   void takeDamage(int dmg);
 };

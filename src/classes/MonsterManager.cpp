@@ -8,7 +8,7 @@ void MonsterManager::AddMonster(Monster monster) {
    // std::cout << monster.getName() << std::endl;
 }
 
-Monster MonsterManager::getMonsterAtIndex(int index) {
+Monster& MonsterManager::getMonsterAtIndex(int index) {
    return monsterList[index];
 }
 

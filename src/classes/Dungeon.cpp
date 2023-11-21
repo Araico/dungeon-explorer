@@ -2,6 +2,6 @@
 
 Dungeon::Dungeon() {}
 
-Dungeon::Dungeon(Monster monster) : monster(monster) {}
+Dungeon::Dungeon(Monster* monster) : monster(monster) {}
 
-Monster Dungeon::getMonster() { return monster; }
+Monster* Dungeon::getMonster() { return monster; }

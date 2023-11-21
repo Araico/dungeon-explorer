@@ -9,6 +9,6 @@ class MonsterManager {
 
   public:
    static void AddMonster(Monster monster);
-   static Monster getMonsterAtIndex(int index);
+   static Monster& getMonsterAtIndex(int index);
    static int getMonsterCount();
 };
