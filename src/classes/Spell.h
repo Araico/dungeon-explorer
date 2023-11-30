@@ -1,46 +1,22 @@
 #pragma once
 
 #include <string>
-#include "../enums/SpellEnums.h"
 using namespace std;
-using namespace SpellEnums;
 
 class Spell {
 
   private:
-   int level;
    string name;
-   School school;
-
-   RangeType rangeType;
-   int range;
-
-   CastType castType;
-   int castTime;
-
-   bool verbalComponent;
-   bool somaticComponent;
-   bool materialComponent;
-
-   string iconPath;
+   string type;
+   string description;
+   int value;
 
   public:
-   Spell(int level, string name, School school, RangeType rangeType, int range,
-         CastType castType, int castTime, bool verbalComponent,
-         bool somaticComponent, bool materialComponent, string iconPath);
-   ~Spell();
+   Spell();
+   Spell(string name, string type, string description, int value);
 
-   int getLevel() const;
-   string getName() const;
-   School getSchool() const;
-
-   RangeType getRangeType() const;
-   int getRange() const;
-
-   CastType getCastType() const;
-   int getCastTime() const;
-
-   bool getVerbalComponent() const;
-   bool getSomaticComponent() const;
-   bool getMaterialComponent() const;
+   string getName();
+   string getType();
+   string getDescription();
+   int getValue();
 };

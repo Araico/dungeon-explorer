@@ -2,6 +2,8 @@
 #include <iostream>
 #include "../../classes/Dungeon.h"
 #include "../../classes/Monster.h"
+#include "../../classes/Spell.h"
+
 using namespace std;
 
 /**
@@ -82,3 +84,4 @@ void Node<T>::setData(T data) {
 template class Node<int>;
 template class Node<Monster>;
 template class Node<Dungeon>;
+template class Node<Spell>;

@@ -1,9 +1,10 @@
 #include "GameManager.h"
-#include "MonsterManager.h"
 
 Dungeon* GameManager::activeDungeon;
 Player GameManager::player;
 LinkedList<Dungeon> GameManager::dungeonList;
+LinkedList<Spell> GameManager::spellList;
+LinkedList<Monster> GameManager::monsterList;
 GameState GameManager::gameState;
 
 void GameManager::startNewGame() {
@@ -15,12 +16,11 @@ void GameManager::startNewGame() {
    LinkedList<Dungeon> newList;
    dungeonList = newList;
 
-   if (MonsterManager::getMonsterCount() > 0) {
+   if (monsterList.getLength() > 0) {
       for (int i = 0; i < 20; i++) {
-         int randomIndex = rand() % MonsterManager::getMonsterCount();
+         int randomIndex = rand() % monsterList.getLength();
 
-         Monster* newMonster =
-             new Monster(MonsterManager::getMonsterAtIndex(randomIndex));
+         Monster* newMonster = new Monster(monsterList[randomIndex]);
 
          Dungeon newDungeon(newMonster);
          dungeonList.insert(newDungeon);
@@ -100,3 +100,13 @@ void GameManager::setGameState(GameState state) { gameState = state; }
 int GameManager::getPlayerHp() { return player.getHp(); }
 
 int GameManager::getPlayerLp() { return player.getLp(); }
+
+LinkedList<Monster> GameManager::getMonsterList() { return monsterList; }
+
+void GameManager::addMonsterToList(Monster monster) {
+   monsterList.insert(monster);
+}
+
+LinkedList<Spell> GameManager::getItemList() { return spellList; }
+
+void GameManager::addItemToList(Spell spell) { spellList.insert(spell); }

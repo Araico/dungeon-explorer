@@ -1,0 +1,26 @@
+Type,Spell,Description,Value
+Damage,Acid Splash,Conjures a bubble of acid,4
+Damage,Booming Blade,Attacks with an energy-imbued sword,4
+Damage,Chill Touch,Summons a spectral hand,4
+Damage,Absorb Elements,Absorbs part of elemental damage,4
+Damage,Arms of Hadar,Summons damaging tentacles,7
+Damage,Fireball,Launches an explosive fireball,28
+Damage,Cone of Cold,Emits an extremely cold cone,36
+Damage,Destructive Wave,Emits a destructive energy wave,36
+Damage,Blade Barrier,Creates a rotating blade wall,33
+Damage,Chain Lightning,Casts a lightning bolt that jumps between targets,45
+Damage,Abi-Dalzim’s Horrid Wilting,Withers creatures in an area,54
+Damage,Dark Star,Creates a damaging sphere of darkness,44
+Damage,Blade of Disaster,Summons a powerful magical blade,26
+Damage,Meteor Swarm,Launches a meteor shower,140
+Damage,Prismatic Wall,Creates a damaging multicolored barrier,175
+Healing,Healing Word,Heals a creature with a single word,2
+Healing,Mass Healing Word,Heals up to six creatures,2
+Healing,Healing Spirit,Summon a spirit to heal creatures,4
+Healing,Cure Wounds,Heals wounds with a touch,4
+Healing,Prayer of Healing,Prayer to heal multiple targets,9
+Healing,Aura of Vitality,Aura that heals nearby targets,7
+Healing,Heros Feast,Feast that heals and strengthens,11
+Healing,Vampiric Touch,Drains health from a target,10
+Healing,Power Word Heal,Powerful word that fully heals,100
+Healing,Heal,Heals a significant amount of hit points,70

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include "../../classes/Dungeon.h"
 #include "../../classes/Monster.h"
+#include "../../classes/Spell.h"
 using namespace std;
 
 /**
@@ -178,3 +179,4 @@ void LinkedList<T>::print() {
 template class LinkedList<int>;
 template class LinkedList<Monster>;
 template class LinkedList<Dungeon>;
+template class LinkedList<Spell>;

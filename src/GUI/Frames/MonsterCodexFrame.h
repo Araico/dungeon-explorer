@@ -2,7 +2,6 @@
 #include <wx/listctrl.h>
 #include <wx/wx.h>
 #include <string>
-#include "../../classes/MonsterManager.h"
 
 using namespace std;
 

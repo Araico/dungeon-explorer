@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Dungeon.h"
+#include "Monster.h"
 #include "Player.h"
+#include "Spell.h"
 
 enum GameState {
    D20,
@@ -17,6 +19,9 @@ class GameManager {
    static Player player;
    static Dungeon* activeDungeon;
    static LinkedList<Dungeon> dungeonList;
+   static LinkedList<Monster> monsterList;
+   static LinkedList<Spell> spellList;
+
    static GameState gameState;
 
   public:
@@ -38,4 +43,10 @@ class GameManager {
 
    static int getPlayerHp();
    static int getPlayerLp();
+
+   static LinkedList<Monster> getMonsterList();
+   static void addMonsterToList(Monster monster);
+
+   static LinkedList<Spell> getItemList();
+   static void addItemToList(Spell spell);
 };

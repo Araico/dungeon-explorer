@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "../../classes/GameManager.h"
-#include "../../enums/MonsterEnums.h"
+#include "ItemsFrame.h"
 #include "MonsterCodexFrame.h"
 
 enum IDs { D20_BUTTON_ID = 1, D10_BUTTON_ID = 2, D8_BUTTON_ID = 3 };
@@ -16,6 +16,11 @@ MainFrame::MainFrame(const wxString& title)
    MonsterCodexFrame* monsterCodexFrame =
        new MonsterCodexFrame("Monster Codex");
    monsterCodexFrame->Show(true);
+   //
+
+   // show items
+   ItemsFrame* itemsFrame = new ItemsFrame("Items");
+   itemsFrame->Show(true);
    //
 
    this->SetSizeHints(wxDefaultSize, wxDefaultSize);
@@ -302,6 +307,12 @@ void MainFrame::refreshUI() {
 }
 
 void MainFrame::OnD20(wxCommandEvent& event) {
+   if (GameManager::getMonsterList().getLength() == 0 ||
+       GameManager::getItemList().getLength() == 0) {
+      wxLogMessage("Load monsters.csv to start");
+      return;
+   }
+
    int rolledNumber = GameManager::moveToRandomDungeon() + 1;
 
    D20_text->SetLabel(std::to_string(rolledNumber));
