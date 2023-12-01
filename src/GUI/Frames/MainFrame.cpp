@@ -256,10 +256,14 @@ MainFrame::MainFrame(const wxString& title)
 void MainFrame::refreshUI() {
    GameState gameState = GameManager::getGameState();
 
-   // check if player died:
-   if (gameState == GameState::DEAD) {
+   // check if player died or won:
+   if (gameState == GameState::DEAD || gameState == GameState::WIN) {
 
-      string message = "You died, restart game?\n\n Monsters defeated:\n";
+      string message =
+          gameState == GameState::DEAD ? "You died," : "All dungeons cleared,";
+
+      message += "restart game?\n\n Monsters defeated:\n";
+
       LinkedList<Monster> defeatedMonsters =
           GameManager::getPlayer().getDefeatedMonsters();
       defeatedMonsters.sort();
@@ -269,19 +273,7 @@ void MainFrame::refreshUI() {
                      defeatedMonsters[i].getName() + "\n");
       }
 
-      // LinkedList<string> test;
-      // test.insert("gnoll-wi");
-      // test.insert("derro-sav");
-      // test.insert("githzerai-z");
-      // test.insert("jaculi");
-
-      // test.sort();
-
-      // for (int i = 0; i < test.getLength(); i++) {
-      //    message += ("*[" + to_string(i + 1) + "]-" + test[i] + "\n");
-      // }
-
-      auto res = wxMessageBox(message, "Game over", wxYES_NO);
+      auto res = wxMessageBox(message, "Message", wxYES_NO);
 
       switch (res) {
          case wxYES:

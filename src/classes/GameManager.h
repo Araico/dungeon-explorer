@@ -16,6 +16,8 @@ enum GameState {
 
 class GameManager {
   private:
+   static const int DUNGEON_COUNT = 20;
+
    static Player player;
    static Dungeon* activeDungeon;
    static LinkedList<Dungeon> dungeonList;

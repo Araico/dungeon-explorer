@@ -17,7 +17,7 @@ void GameManager::startNewGame() {
    dungeonList = newList;
 
    if (monsterList.getLength() > 0) {
-      for (int i = 0; i < 20; i++) {
+      for (int i = 0; i < DUNGEON_COUNT; i++) {
          int randomIndex = rand() % monsterList.getLength();
 
          Monster* newMonster = new Monster(monsterList[randomIndex]);
@@ -36,7 +36,7 @@ Dungeon GameManager::getDungeonAtIndex(int index) { return dungeonList[index]; }
 void GameManager::generateMap() {}
 
 int GameManager::moveToRandomDungeon() {
-   int randomNum = rand() % 20;
+   int randomNum = rand() % DUNGEON_COUNT;
 
    // check  if its valid index
    if (randomNum < dungeonList.getLength()) {
@@ -59,9 +59,15 @@ int GameManager::playerAttack() {
 
    // if killed monster add it to list
    if (activeDungeon->getMonster()->getHp() <= 0) {
-      gameState = GameState::D8;
+
       player.addDefeatedMonster(*(activeDungeon->getMonster()));
       // player.addDefeatedMonster(Monster(*(activeDungeon->getMonster())));
+
+      if (player.getDefeatedMonsters().getLength() == DUNGEON_COUNT) {
+         gameState = GameState::WIN;
+      } else {
+         gameState = GameState::D8;
+      }
 
    } else {
       gameState = GameState::D10_ENEMY;
