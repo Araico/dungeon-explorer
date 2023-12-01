@@ -41,6 +41,7 @@ class GameManager {
 
    static GameState getGameState();
 
+   static Player getPlayer();
    static int getPlayerHp();
    static int getPlayerLp();
 

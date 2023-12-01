@@ -85,3 +85,4 @@ template class Node<int>;
 template class Node<Monster>;
 template class Node<Dungeon>;
 template class Node<Spell>;
+template class Node<string>;

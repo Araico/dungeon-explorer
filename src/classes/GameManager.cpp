@@ -43,7 +43,7 @@ int GameManager::moveToRandomDungeon() {
       activeDungeon = &dungeonList[randomNum];
    }
 
-   if (activeDungeon->getMonster()->getHp() < 0) {
+   if (activeDungeon->getMonster()->getHp() <= 0) {
       gameState = GameState::D20;
    } else {
       gameState = GameState::D10_ENEMY;
@@ -55,7 +55,7 @@ int GameManager::moveToRandomDungeon() {
 int GameManager::playerAttack() {
    int randomNum = (rand() % 10) + 1;
 
-   activeDungeon->getMonster()->takeDamage(randomNum);
+   activeDungeon->getMonster()->takeDamage(randomNum + player.getHp());
 
    // if killed monster add it to list
    if (activeDungeon->getMonster()->getHp() <= 0) {
@@ -70,12 +70,14 @@ int GameManager::playerAttack() {
    return randomNum;
 }
 
+Player GameManager::getPlayer() { return player; }
+
 int GameManager::enemyAttack() {
    int randomNum = (rand() % 10) + 1;
 
-   player.setHp(player.getHp() - randomNum);
+   player.setLp(player.getLp() - randomNum);
 
-   if (player.getHp() <= 0)
+   if (player.getLp() <= 0)
       gameState = GameState::DEAD;
    else
       gameState = GameState::D10_PLAYER;

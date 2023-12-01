@@ -12,3 +12,5 @@ string Spell::getType() { return type; }
 string Spell::getDescription() { return description; }
 
 int Spell::getValue() { return value; }
+
+bool Spell::operator>(const Spell& other) const { return false; }

@@ -38,3 +38,7 @@ int Monster::getHp() const { return hp; }
 string Monster::getAlign() const { return align; }
 
 void Monster::takeDamage(int dmg) { hp -= dmg; }
+
+bool Monster::operator>(const Monster& other) const {
+   return this->name > other.getName();
+}

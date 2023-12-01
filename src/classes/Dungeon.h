@@ -10,4 +10,6 @@ class Dungeon {
    Dungeon();
    Dungeon(Monster* monster);
    Monster* getMonster();
+
+   bool operator>(const Dungeon& other) const;
 };

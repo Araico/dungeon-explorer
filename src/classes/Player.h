@@ -9,7 +9,7 @@ class Player {
   private:
    string name;
    string race;
-   int hp = 1000;
+   int hp = 10;
    int lp = 100;
    LinkedList<Monster> defeatedMonsters;
 
@@ -24,4 +24,5 @@ class Player {
    int getHp();
 
    void addDefeatedMonster(Monster monster);
+   LinkedList<Monster> getDefeatedMonsters();
 };

@@ -15,3 +15,5 @@ int Player::getHp() { return hp; }
 void Player::addDefeatedMonster(Monster monster) {
    defeatedMonsters.insert(monster);
 }
+
+LinkedList<Monster> Player::getDefeatedMonsters() { return defeatedMonsters; }

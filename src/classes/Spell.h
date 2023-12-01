@@ -19,4 +19,6 @@ class Spell {
    string getType();
    string getDescription();
    int getValue();
+
+   bool operator>(const Spell& other) const;
 };

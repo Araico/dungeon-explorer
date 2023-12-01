@@ -31,4 +31,6 @@ class Monster {
    string getAlign() const;
 
    void takeDamage(int dmg);
+
+   bool operator>(const Monster& other) const;
 };

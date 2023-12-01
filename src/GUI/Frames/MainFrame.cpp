@@ -256,9 +256,46 @@ MainFrame::MainFrame(const wxString& title)
 void MainFrame::refreshUI() {
    GameState gameState = GameManager::getGameState();
 
-   // Check if player is dead
+   // check if player died:
    if (gameState == GameState::DEAD) {
-      wxLogMessage("Dead");
+
+      string message = "You died, restart game?\n\n Monsters defeated:\n";
+      LinkedList<Monster> defeatedMonsters =
+          GameManager::getPlayer().getDefeatedMonsters();
+      defeatedMonsters.sort();
+
+      for (int i = 0; i < defeatedMonsters.getLength(); i++) {
+         message += ("[" + to_string(i + 1) + "]-" +
+                     defeatedMonsters[i].getName() + "\n");
+      }
+
+      // LinkedList<string> test;
+      // test.insert("gnoll-wi");
+      // test.insert("derro-sav");
+      // test.insert("githzerai-z");
+      // test.insert("jaculi");
+
+      // test.sort();
+
+      // for (int i = 0; i < test.getLength(); i++) {
+      //    message += ("*[" + to_string(i + 1) + "]-" + test[i] + "\n");
+      // }
+
+      auto res = wxMessageBox(message, "Game over", wxYES_NO);
+
+      switch (res) {
+         case wxYES:
+            GameManager::startNewGame();
+            current_dungeon_text->SetLabel("Dungeon: NA");
+            enemy_name_text->SetLabel("NA");
+            gameState = GameState::D20;
+
+            break;
+
+         case wxNO:
+            Close(true);
+            break;
+      }
    }
 
    // update buttons enable
@@ -282,7 +319,8 @@ void MainFrame::refreshUI() {
    // update monster info
    Monster* activeMonster = GameManager::getActiveDungeon()->getMonster();
 
-   if (activeMonster->getHp() > 0) {
+   if (activeMonster->getHp() > 0 && (gameState == GameState::D10_ENEMY ||
+                                      gameState == GameState::D10_PLAYER)) {
       D20_button->Enable(false);
       D10_button->Enable(true);
 
@@ -291,7 +329,7 @@ void MainFrame::refreshUI() {
       enemy_hp_bar->SetRange(activeMonster->getHp());
       enemy_hp_bar->SetValue(activeMonster->getHp());
       enemy_hp_text->SetLabel(std::to_string(activeMonster->getHp()));
-   } else {
+   } else if (activeMonster->getHp() <= 0) {
       enemy_name_text->SetLabel("Defeated");
 
       enemy_hp_bar->SetValue(0);
@@ -307,8 +345,7 @@ void MainFrame::refreshUI() {
 }
 
 void MainFrame::OnD20(wxCommandEvent& event) {
-   if (GameManager::getMonsterList().getLength() == 0 ||
-       GameManager::getItemList().getLength() == 0) {
+   if (GameManager::getMonsterList().getLength() == 0) {
       wxLogMessage("Load monsters.csv to start");
       return;
    }

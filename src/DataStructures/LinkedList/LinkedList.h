@@ -24,6 +24,8 @@ class LinkedList {
    void insert(const T& element, int index = -1);
    void remove(int index = -1);
 
+   void sort();
+
    void print();
 
    // void Swap(int index1, int index2);

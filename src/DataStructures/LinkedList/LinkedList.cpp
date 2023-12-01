@@ -159,6 +159,19 @@ void LinkedList<T>::remove(int index) {
    }
 }
 
+template <typename T>
+void LinkedList<T>::sort() {
+   for (int i = 0; i < length; i++) {
+      for (int j = 0; j < length - j - 1; j++) {
+         if ((*this)[j] > (*this)[j + 1]) {
+            T temp = (*this)[j];
+            (*this)[j] = (*this)[j + 1];
+            (*this)[j + 1] = temp;
+         }
+      }
+   }
+}
+
 /**
  * @brief Print the Linked List.
  */
@@ -180,3 +193,4 @@ template class LinkedList<int>;
 template class LinkedList<Monster>;
 template class LinkedList<Dungeon>;
 template class LinkedList<Spell>;
+template class LinkedList<string>;
