@@ -14,7 +14,7 @@ MainFrame::MainFrame(const wxString& title)
 
    // show monster codex
    MonsterCodexFrame* monsterCodexFrame =
-       new MonsterCodexFrame("Monster Codex");
+       new MonsterCodexFrame("Monster Codex", this);
    monsterCodexFrame->Show(true);
    //
 
@@ -258,26 +258,34 @@ void MainFrame::refreshUI() {
 
    // check if player died or won:
    if (gameState == GameState::DEAD || gameState == GameState::WIN) {
-
-      string message =
-          gameState == GameState::DEAD ? "You died," : "All dungeons cleared,";
-
-      message += "restart game?\n\n Monsters defeated:\n";
-
       LinkedList<Monster> defeatedMonsters =
           GameManager::getPlayer().getDefeatedMonsters();
       defeatedMonsters.sort();
+
+      string message = "";
+
+      message += gameState == GameState::DEAD ? "You died!\n\n"
+                                              : "All dungeons cleared!\n\n";
+
+      message += "Player name: " + GameManager::getPlayer().getName() + "\n";
+      message += "Player race: " + GameManager::getPlayer().getRace() + "\n";
+      message +=
+          "Dungeons cleared: " + to_string(defeatedMonsters.getLength()) +
+          "\n\n\n";
+      message += "Defeated enemies:\n";
 
       for (int i = 0; i < defeatedMonsters.getLength(); i++) {
          message += ("[" + to_string(i + 1) + "]-" +
                      defeatedMonsters[i].getName() + "\n");
       }
 
+      message += "\n\n\n\nRestart game?";
+
       auto res = wxMessageBox(message, "Message", wxYES_NO);
 
       switch (res) {
          case wxYES:
-            GameManager::startNewGame();
+            startNewGame();
             current_dungeon_text->SetLabel("Dungeon: NA");
             enemy_name_text->SetLabel("NA");
             gameState = GameState::D20;
@@ -334,6 +342,25 @@ void MainFrame::refreshUI() {
 
    lp_text->SetLabel(std::to_string(GameManager::getPlayerLp()));
    lp_bar1->SetValue(GameManager::getPlayerLp());
+}
+
+void MainFrame::startNewGame() {
+   wxString name = "";
+   wxString race = "";
+
+   // ask name
+   wxTextEntryDialog inputPlayerNameDialog(this, "Enter player name");
+   inputPlayerNameDialog.SetTextValidator(
+       wxTextValidator(wxFILTER_NONE, &name));
+   inputPlayerNameDialog.ShowModal();
+
+   // ask Race
+   wxTextEntryDialog inputPlayerRaceDialog(this, "Enter player race");
+   inputPlayerRaceDialog.SetTextValidator(
+       wxTextValidator(wxFILTER_NONE, &race));
+   inputPlayerRaceDialog.ShowModal();
+
+   GameManager::startNewGame(name.ToStdString(), race.ToStdString());
 }
 
 void MainFrame::OnD20(wxCommandEvent& event) {

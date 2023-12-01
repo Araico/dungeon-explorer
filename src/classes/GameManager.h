@@ -27,7 +27,7 @@ class GameManager {
    static GameState gameState;
 
   public:
-   static void startNewGame();
+   static void startNewGame(string name, string race);
 
    static Dungeon getDungeonAtIndex(int index);
    static void generateMap();

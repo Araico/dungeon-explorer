@@ -2,12 +2,15 @@
 #include <wx/listctrl.h>
 #include <wx/wx.h>
 #include <string>
+#include "MainFrame.h"
 
 using namespace std;
 
 class MonsterCodexFrame : public wxFrame {
   private:
    wxListView* monsterListView;
+
+   MainFrame* mainFrame;
 
    ///
    void OnLoadCSV(wxCommandEvent& event);
@@ -20,5 +23,5 @@ class MonsterCodexFrame : public wxFrame {
                                 const string hp, const string align);
 
   public:
-   MonsterCodexFrame(const wxString& title);
+   MonsterCodexFrame(const wxString& title, MainFrame* mainFame);
 };

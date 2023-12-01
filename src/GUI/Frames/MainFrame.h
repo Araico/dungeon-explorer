@@ -38,6 +38,7 @@ class MainFrame : public wxFrame {
   public:
    MainFrame(const wxString& title);
    void refreshUI();
+   void startNewGame();
    void OnD20(wxCommandEvent& event);
    void OnD10(wxCommandEvent& event);
    void OnD8(wxCommandEvent& event);

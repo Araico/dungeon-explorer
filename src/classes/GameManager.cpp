@@ -7,10 +7,10 @@ LinkedList<Spell> GameManager::spellList;
 LinkedList<Monster> GameManager::monsterList;
 GameState GameManager::gameState;
 
-void GameManager::startNewGame() {
+void GameManager::startNewGame(string name, string race) {
 
    // create new player
-   player = Player("test");
+   player = Player(name, race);
 
    // generate map
    LinkedList<Dungeon> newList;

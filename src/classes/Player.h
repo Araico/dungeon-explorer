@@ -9,12 +9,12 @@ class Player {
   private:
    string name;
    string race;
-   int hp = 10000;
+   int hp = 10;
    int lp = 100;
    LinkedList<Monster> defeatedMonsters;
 
   public:
-   Player(string name);
+   Player(string name, string race);
    Player();
 
    void setHp(int newHp);
@@ -22,6 +22,9 @@ class Player {
 
    int getLp();
    int getHp();
+
+   string getName();
+   string getRace();
 
    void addDefeatedMonster(Monster monster);
    LinkedList<Monster> getDefeatedMonsters();

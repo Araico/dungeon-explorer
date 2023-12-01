@@ -109,6 +109,4 @@ void ItemsFrame::OnLoadCSV(wxCommandEvent& event) {
       AppendSpellToListView(temp.getType(), temp.getName(),
                             temp.getDescription(), to_string(temp.getValue()));
    }
-
-   GameManager::startNewGame();
 }
