@@ -1,97 +1,101 @@
-Descripción del Proyecto:
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
+<a name="readme-top"></a>
+
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Jose-AE/dungeon-explorer">
+    <img src="https://static.thenounproject.com/png/4213462-200.png" alt="Logo" width="80" height="80">
+  </a>
+<h3 align="center">Dungeon Explorer</h3>
+
+  <p align="center">
+    Dungeon Explorer is a data-driven Dungeons and Dragons (D&D) companion application, featuring a dynamic creature codex, spell and skill management, interconnected dungeon mapping, player progression, and a versatile random encounter generator for an immersive gaming experience.
+    
+  </p>
+</div>
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+<img src="https://i.imgur.com/jJJ9cUT.png" />
 
 
-Dungeon Explorer es un proyecto integral de estructuras de datos diseñado para mejorar la experiencia inmersiva de los juegos de rol de Dungeons and Dragons (D&D). Inspirándose en el intrincado mundo de D&D, este proyecto tiene como objetivo crear un sistema de base de datos versátil y eficiente que organice, gestione y recupere información relacionada con el juego, asegurando una experiencia de juego perfecta tanto para los jugadores como para los Dungeon Masters.
+Dungeon Explorer is a comprehensive data structures project designed to enhance the immersive experience of Dungeons and Dragons (D&D) role-playing games. Drawing inspiration from the intricate world of D&D, this project aims to create a versatile and efficient database system that organizes, manages, and retrieves game-related information, ensuring a seamless gaming experience for both players and Dungeon Masters.
+
+**Key Features:**
+- **Creature Codex:**
+Develop a dynamic repository of creatures and monsters found in the D&D universe. Utilize a linked list to load a monster inventory, facilitating quick access for Dungeon Masters during encounters. Use the file: monsters.csv, where creature data includes:
+
+  - name: name of the creature
+  - cr: challenge rating, indicating the difficulty of defeating the creature
+  - type: type of creature
+  - size: size of creature, indicating the space it occupies
+  - ac: armor class, indicating how difficult the creature is to hit
+  - hp: hit points, indicating how much damage the creature can take before being defeated
+  - align: provides a clue to the default behavior of the creature
 
 
-Características clave:
+**Spell and Skill Tome:**
+Create a data structure to manage spells and skills, allowing players to customize and maintain unique spell and skill books for their characters. Implement an efficient search and filtering mechanism for quick spell selection during gameplay. Research 15 spells and skills that can be used, create an abstract data type to represent a spell and/or skill, and load them into a linked list for access.
+
+**Dungeon Map and Location Tracking:**
+Use linked list-based data structures to represent the game world, consisting of a series of sequentially interconnected dungeons. The maximum number of interconnected dungeons is 20, with each dungeon having a randomly selected monster from the creature codex.
+
+**Player:**
+Implement an abstract data type representing the player. A player has a hit point level that starts at 10 and increases after winning a battle in a dungeon, a race (elf, human, or dwarf), a name, life points (lp) that decrease or increase with a spell, starting at 100 points and reaching up to 999, and a list of defeated monsters.
+
+**Random Encounter Generator:**
+Implement a versatile random encounter generator using the following system:
+
+- Load the creature codex.
+- Load the dungeon map, assigning a random monster to each dungeon.
+- Load your list of at least 15 spells and skills.
+- The player has 100 points that can be deducted with a creature's attack and can be increased with a specific spell.
+- While the player has life:
+  - Roll a 20-sided die to reach a dungeon.
+  - If the dungeon's creature is dead (based on its hit points), roll the die again. Otherwise, if the creature is alive, enter into combat.
+  - While the player or the creature is alive:
+  - The monster attacks, roll a 10-sided die to determine damage.
+  - The player attacks, roll a 10-sided die to simulate damage dealt.
+  - If the player survives, record the defeated monster.
+  - The player can roll an 8-sided die to recover life points (lp).
+  - The game ends when the player dies.
+  - Upon completion, display a sorted list, by name, of the defeated monsters, including their name, race, and the number of conquered dungeons.
 
 
-Códice de criaturas:
+### Built With
 
-Desarrolle un depósito dinámico de criaturas y monstruos que se encuentran en el universo D&D. Utiliza una lista ligada para cargar un inventario de monstruos, lo que facilita el acceso rápido a los Dungeon Masters durante los encuentros. Utiliza el archivo: monsters.csv, los datos de cada criatura son:
-
-name: name of the creature
-cr: challenge rating, how difficult is the creature to defeat
-type: type of creature
-size: size of creature, how much space it occupies
-ac: armor class, how difficult the creature is to hit
-hp: hit points, how much damage the creature must take before being defeated
-align: gives a clue to the default behavior of the creature
-
-Crea el tipo de dato abstracto para representar a un monstruo. Y una lista ligada para tener un códice de monstruos que pueden salir a atacarte de un calabozo.
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://cmake.org/wp-content/uploads/2023/08/CMake-Mark.svg" alt="Typescript" width="40" height="40"/> </a>
+<a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://camo.githubusercontent.com/2d43f677813e9f908e0d6d1a0d501e664c63cb2208943290ff5d089f5ebcbe84/68747470733a2f2f63646e2e63646e6c6f676f2e636f6d2f6c6f676f732f632f36382f632d73686172702d383030783830302e706e67" alt="react" width="40" height="40"/> </a>
+<a href="https://chakra-ui.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/WxWidgets.svg/192px-WxWidgets.svg.png" alt="chakra ui" width="55" height="40"/> </a>
 
 
 
-Repositorio de libros de hechizos y habilidades:
 
-window donde muestra el inventario de hechizos y habilidades del jugador y el jugador puede agregar las que quiera de una lista   
+<!-- LICENSE -->
 
+## License
 
-Cree una estructura de datos para administrar hechizos y habilidades, lo que permite a los jugadores personalizar y mantener los libros de hechizos y habilidades únicas de sus personajes. Implemente un mecanismo eficiente de búsqueda y filtrado para una selección rápida de hechizos durante el juego. Investiga 15 hechizos y habilidades qué puedes utilizar. Crea el tipo de dato abstracto para representar un hechizo y/o habilidad. Deben ser cargadas en una lista de ligada para su acceso.
-
-
-Mapa de calabozos y seguimiento de ubicación:
-
-Utilice estructuras de datos basadas en una lista ligada para representar el mundo del juego y sus ubicaciones son una serie de calabozos interconectados de manera secuencial. 
-
-El número de calabozos interconectados tiene un máximo de 20 calabozos. Cada calabozo debe tener un monstruo que se selecciona aleatoriamente del códice de criaturas.
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
-Jugador:
-
-Debes tener un tipo de dato abstracto que representa al jugador. Un jugador cuenta con un nivel de hp (hit points) que inicia en 10 y se incrementa al ganar una batalla en un calabozo, una raza (elf, human or dwarf), nombre, lp (life points) que decrecen o se incrementan con un hechizo, inicia en 100 puntos y puede llegar a 999 y una lista de monstruos que ha derrotado.
-
-
-Generador de encuentros aleatorios:
-
-Implemente un generador versátil de encuentros aleatorios utilizando el siguiente sistema:
-
-Carga el códice de criaturas.
-Carga el mapa de calabozos, asignando un monstruo aleatorio en cada calabozo.
-Cargar tu lista de mínimo 15 hechizos y habilidades.
-El jugador tiene 100 puntos que se pueden ir descontando con el ataque de una criatura y se puede incrementar con una magia específica.
-El algoritmo a seguir es:
-Mientras el jugador tenga vida:
-Lanzar un dado de 20 caras para llegar a un calabozo.
-Sí la criatura del calabozo está muerta (según su hp), vuelve a tirar el dado.
-Sino, si la criatura se encuentra viva, entrarás en combate.
-Mientras el jugador o la criatura sigan vivos:
-Ataca el monstruo, tira un dado de 10 caras para ver cuánto daño te hace.
-El jugador ataca, tira un dato de 10 caras para simular cuánto daño le haces.
-Si el jugador sale vivo, guarda al monstruo que ha derrotado.
-El jugador puede lanzar un dado de 8 caras para recuperar su life points (lf).
-El juego termina cuando el jugador muere.
-Al terminar debe mostrar una lista ordenada, por nombre, de los monstruos que derrotó. Su nombre, raza y cuantos calabozos conquistó.
-
-Tu solución:
-
-Implementa tu solución a la simulación del juego de D&D. Recuerda aplicar todos los conceptos revisados en clase. 
-
-
-Entregables:
-
-Código Fuente.
-Diagramas de clases.
-Análisis de la complejidad de cada función y la complejidad total.
-
-
-Beneficios:
-
-
-Jugabilidad mejorada: el Compendio de Dungeon Explorer mejora la experiencia de D&D al proporcionar un acceso rápido y fácil a la información de los personajes, perfiles de criaturas, gestión de inventario y más.
-
-
-Eficiencia del tiempo: Dungeon Masters puede administrar sin problemas encuentros, misiones y construcción de mundos, reduciendo el tiempo de preparación y asegurando un entorno de juego dinámico.
-
-
-Narración inmersiva: las estructuras de datos organizadas del proyecto facilitan la narración coherente, lo que permite a Dungeon Masters tejer narrativas y aventuras intrincadas.
-
-
-Interfaz fácil de usar: una interfaz de usuario intuitiva garantiza que los jugadores y Dungeon Masters puedan interactuar sin esfuerzo con el sistema de base de datos, incluso durante un juego de ritmo rápido.
-
-
-Personalización: los jugadores pueden adaptar sus personajes, hechizos y habilidades con facilidad, promoviendo la creatividad y el pensamiento estratégico.
-
-
-El Compendio de Dungeon Explorer está destinado a convertirse en una herramienta invaluable tanto para los recién llegados como para los veteranos de Dungeons and Dragons, mejorando la experiencia de juego de rol de mesa y cimentando su lugar como un compañero esencial para todos los aventureros en los reinos de la fantasía.
