@@ -6,10 +6,12 @@
 
 enum IDs { LOAD_CSV_BUTTON_ID = 1, TEST = 0 };
 
-MonsterCodexFrame::MonsterCodexFrame(const wxString& title, MainFrame* mainFame)
+MonsterCodexFrame::MonsterCodexFrame(const wxString& title, MainFrame* mainFame,
+                                     ItemsFrame* itemsFrame)
     : wxFrame(nullptr, wxID_ANY, title) {
 
    this->mainFrame = mainFame;
+   this->itemsFrame = itemsFrame;
 
    AddMenuBar();
    AddMonsterListView();
@@ -122,4 +124,5 @@ void MonsterCodexFrame::OnLoadCSV(wxCommandEvent& event) {
    }
 
    mainFrame->startNewGame();
+   itemsFrame->Show(true);
 }

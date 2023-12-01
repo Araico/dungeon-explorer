@@ -4,16 +4,20 @@
 #include <vector>
 #include "../../classes/GameManager.h"
 
-enum IDs { LOAD_CSV_BUTTON_ID = 1, TEST = 0 };
+enum IDs { LOAD_CSV_BUTTON_ID = 1, USE_ITEM_BUTTON_ID = 50 };
 
-ItemsFrame::ItemsFrame(const wxString& title)
+ItemsFrame::ItemsFrame(const wxString& title, MainFrame* mainFrame)
     : wxFrame(nullptr, wxID_ANY, title) {
+
+   this->mainFrame = mainFrame;
 
    AddMenuBar();
    AddItemsListView();
 
    BindEvents();
 }
+
+void ItemsFrame::refreshFrame() {}
 
 void ItemsFrame::AddMenuBar() {
    wxMenu* menuFile = new wxMenu;
@@ -31,8 +35,8 @@ void ItemsFrame::AddItemsListView() {
                                   wxDefaultSize, wxLC_REPORT);
 
    // Set up columns in the list view
+   itemsListView->AppendColumn("Name", wxLIST_FORMAT_LEFT);
    itemsListView->AppendColumn("Type", wxLIST_FORMAT_LEFT);
-   itemsListView->AppendColumn("Spell", wxLIST_FORMAT_LEFT);
    itemsListView->AppendColumn("Description", wxLIST_FORMAT_LEFT);
    itemsListView->AppendColumn("Value", wxLIST_FORMAT_LEFT);
 
@@ -40,10 +44,21 @@ void ItemsFrame::AddItemsListView() {
    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
    mainSizer->Add(itemsListView, 1, wxEXPAND | wxALL, 10);
    SetSizer(mainSizer);
+
+   // Create a sizer for the button
+   use_item_button =
+       new wxButton(this, IDs::USE_ITEM_BUTTON_ID, wxT("Use item"),
+                    wxDefaultPosition, wxSize(300, 25), 0);
+   use_item_button->Enable(false);
+
+   wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+   buttonSizer->Add(use_item_button, 0, wxALL, 10);
+   mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER_HORIZONTAL);
 }
 
 void ItemsFrame::BindEvents() {
    Bind(wxEVT_MENU, &ItemsFrame::OnLoadCSV, this, LOAD_CSV_BUTTON_ID);
+   Bind(wxEVT_BUTTON, &ItemsFrame::OnUseItem, this, USE_ITEM_BUTTON_ID);
 }
 
 void ItemsFrame::AppendSpellToListView(const string name, const string type,
@@ -56,6 +71,24 @@ void ItemsFrame::AppendSpellToListView(const string name, const string type,
    itemsListView->SetItem(lastIndex, 1, name);
    itemsListView->SetItem(lastIndex, 2, description);
    itemsListView->SetItem(lastIndex, 3, value);
+}
+
+void ItemsFrame::OnUseItem(wxCommandEvent& event) {
+
+   int itemIndex = itemsListView->GetFocusedItem();
+
+   if (itemIndex >= 0) {
+      Spell spell = GameManager::useItem(itemIndex);
+
+      // Remove the item from the wxListView
+      itemsListView->DeleteItem(itemIndex);
+
+      mainFrame->refreshUI();
+
+      wxMessageBox("Used: " + spell.getName(), "Item");
+   }
+
+   //
 }
 
 ///------------------------- event functions:--------------------------------
@@ -97,7 +130,7 @@ void ItemsFrame::OnLoadCSV(wxCommandEvent& event) {
       }
 
       //------------Load items  into linked list----------------------
-      Spell tempSpell(columns[0], (columns[1]), columns[2], stoi(columns[3]));
+      Spell tempSpell(columns[1], (columns[0]), columns[2], stoi(columns[3]));
       GameManager::addItemToList(tempSpell);
    }
    file.close();
@@ -109,4 +142,6 @@ void ItemsFrame::OnLoadCSV(wxCommandEvent& event) {
       AppendSpellToListView(temp.getType(), temp.getName(),
                             temp.getDescription(), to_string(temp.getValue()));
    }
+
+   use_item_button->Enable(true);
 }

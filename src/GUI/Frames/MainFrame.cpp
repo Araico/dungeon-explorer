@@ -12,15 +12,13 @@ enum IDs { D20_BUTTON_ID = 1, D10_BUTTON_ID = 2, D8_BUTTON_ID = 3 };
 MainFrame::MainFrame(const wxString& title)
     : wxFrame(nullptr, wxID_ANY, title) {
 
+   // create items frame
+   ItemsFrame* itemsFrame = new ItemsFrame("Items", this);
+
    // show monster codex
    MonsterCodexFrame* monsterCodexFrame =
-       new MonsterCodexFrame("Monster Codex", this);
+       new MonsterCodexFrame("Monster Codex", this, itemsFrame);
    monsterCodexFrame->Show(true);
-   //
-
-   // show items
-   ItemsFrame* itemsFrame = new ItemsFrame("Items");
-   itemsFrame->Show(true);
    //
 
    this->SetSizeHints(wxDefaultSize, wxDefaultSize);
@@ -317,23 +315,25 @@ void MainFrame::refreshUI() {
                                                             : "PLAYER'S TURN");
 
    // update monster info
-   Monster* activeMonster = GameManager::getActiveDungeon()->getMonster();
+   if (GameManager::getActiveDungeon() != nullptr) {
+      Monster* activeMonster = GameManager::getActiveDungeon()->getMonster();
 
-   if (activeMonster->getHp() > 0 && (gameState == GameState::D10_ENEMY ||
-                                      gameState == GameState::D10_PLAYER)) {
-      D20_button->Enable(false);
-      D10_button->Enable(true);
+      if (activeMonster->getHp() > 0 && (gameState == GameState::D10_ENEMY ||
+                                         gameState == GameState::D10_PLAYER)) {
+         D20_button->Enable(false);
+         D10_button->Enable(true);
 
-      enemy_name_text->SetLabel(activeMonster->getName());
+         enemy_name_text->SetLabel(activeMonster->getName());
 
-      enemy_hp_bar->SetRange(activeMonster->getHp());
-      enemy_hp_bar->SetValue(activeMonster->getHp());
-      enemy_hp_text->SetLabel(std::to_string(activeMonster->getHp()));
-   } else if (activeMonster->getHp() <= 0) {
-      enemy_name_text->SetLabel("Defeated");
+         enemy_hp_bar->SetRange(activeMonster->getHp());
+         enemy_hp_bar->SetValue(activeMonster->getHp());
+         enemy_hp_text->SetLabel(std::to_string(activeMonster->getHp()));
+      } else if (activeMonster->getHp() <= 0) {
+         enemy_name_text->SetLabel("Defeated");
 
-      enemy_hp_bar->SetValue(0);
-      enemy_hp_text->SetLabel("NA");
+         enemy_hp_bar->SetValue(0);
+         enemy_hp_text->SetLabel("NA");
+      }
    }
 
    // update player stats:

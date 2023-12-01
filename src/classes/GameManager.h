@@ -36,6 +36,7 @@ class GameManager {
    static int playerAttack();
    static int enemyAttack();
    static int recoverPlayerLP();
+   static Spell useItem(int itemIndex);
 
    static Dungeon* getActiveDungeon();
 

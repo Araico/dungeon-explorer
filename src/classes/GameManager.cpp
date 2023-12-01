@@ -1,5 +1,4 @@
 #include "GameManager.h"
-
 Dungeon* GameManager::activeDungeon;
 Player GameManager::player;
 LinkedList<Dungeon> GameManager::dungeonList;
@@ -89,6 +88,18 @@ int GameManager::enemyAttack() {
       gameState = GameState::D10_PLAYER;
 
    return randomNum;
+}
+
+Spell GameManager::useItem(int itemIndex) {
+   Spell spell = spellList[itemIndex];
+   spellList.remove(itemIndex);
+
+   if (spell.getType() == "Healing") {
+      player.setLp(player.getLp() + spell.getValue());
+   } else {
+      player.setHp(player.getHp() + spell.getValue());
+   }
+   return spell;
 }
 
 int GameManager::recoverPlayerLP() {
