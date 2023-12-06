@@ -85,9 +85,9 @@ Implement a versatile random encounter generator using the following system:
 
 ### Built With
 
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://cmake.org/wp-content/uploads/2023/08/CMake-Mark.svg" alt="Typescript" width="40" height="40"/> </a>
-<a href="https://reactjs.org/" target="_blank" rel="noreferrer"> <img src="https://camo.githubusercontent.com/f7f24086498ff611c5d0346259cc1cd6bbb757fdd3da2b33debc8724b8d6f558/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f312f31382f49534f5f432532422532425f4c6f676f2e737667" alt="react" width="40" height="40"/> </a>
-<a href="https://chakra-ui.com/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/WxWidgets.svg/192px-WxWidgets.svg.png" alt="chakra ui" width="55" height="40"/> </a>
+<a href="https://cmake.org/" target="_blank" rel="noreferrer"> <img src="https://cmake.org/wp-content/uploads/2023/08/CMake-Mark.svg" alt="Typescript" width="40" height="40"/> </a>
+<a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://camo.githubusercontent.com/f7f24086498ff611c5d0346259cc1cd6bbb757fdd3da2b33debc8724b8d6f558/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f312f31382f49534f5f432532422532425f4c6f676f2e737667" alt="react" width="40" height="40"/> </a>
+<a href="https://www.wxwidgets.org/" target="_blank" rel="noreferrer"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/WxWidgets.svg/192px-WxWidgets.svg.png" alt="chakra ui" width="55" height="40"/> </a>
 
 
 
